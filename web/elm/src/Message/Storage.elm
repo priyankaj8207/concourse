@@ -14,6 +14,7 @@ port module Message.Storage exposing
     , tokenKey
     )
 
+import Json.Decode
 import Json.Encode
 
 
@@ -22,7 +23,7 @@ type alias Key =
 
 
 type alias Value =
-    String
+    Json.Decode.Value
 
 
 port saveToLocalStorage : ( Key, Json.Encode.Value ) -> Cmd msg

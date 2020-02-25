@@ -132,7 +132,7 @@ app.ports.loadFromLocalStorage.subscribe(function(key) {
     return;
   }
   setTimeout(function() {
-    app.ports.receivedFromLocalStorage.send([key, value]);
+    app.ports.receivedFromLocalStorage.send([key, JSON.parse(value)]);
   }, 0);
 });
 
@@ -142,7 +142,7 @@ app.ports.loadFromSessionStorage.subscribe(function(key) {
     return;
   }
   setTimeout(function() {
-    app.ports.receivedFromSessionStorage.send([key, value]);
+    app.ports.receivedFromSessionStorage.send([key, JSON.parse(value)]);
   }, 0);
 });
 
@@ -151,7 +151,7 @@ window.addEventListener('storage', function(event) {
   if (event.key === csrfTokenKey) {
     const value = localStorage.getItem(csrfTokenKey);
     setTimeout(function() {
-      app.ports.receivedFromLocalStorage.send([csrfTokenKey, value]);
+      app.ports.receivedFromLocalStorage.send([csrfTokenKey, JSON.parse(value)]);
     }, 0);
   }
 }, false);

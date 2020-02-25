@@ -186,7 +186,7 @@ decodeStorageResponse expectedKey decoder toDelivery ( key, value ) =
 
     else
         value
-            |> Json.Decode.decodeString decoder
+            |> Json.Decode.decodeValue decoder
             |> toDelivery
 
 
